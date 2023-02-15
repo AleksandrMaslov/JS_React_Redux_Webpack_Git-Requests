@@ -1,8 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 import './app.less'
+import { Card } from './card/card'
 import { Main } from './main/Main'
 
 export function App() {
@@ -11,9 +12,13 @@ export function App() {
   return (
     <div className='body'>
       <div className='container'>
-        <Routes>
-          <Route path='/' element={<Main />} />
-        </Routes>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Main />} />
+            <Route path='/card' element={<Card />} />
+            <Route path='*' element={<Navigate to='/' />} />
+          </Routes>
+        </BrowserRouter>
       </div>
     </div>
   )
